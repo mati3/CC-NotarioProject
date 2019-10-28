@@ -1,5 +1,5 @@
 
-require_relative  'src/Catalogo/producto'
+require_relative  '../src/Catalogo/producto'
 require  'test/unit'
 #require  "json"
 

@@ -1,5 +1,5 @@
 
-require_relative  'src/Usuarios/usuario'
+require_relative  '../src/Usuarios/usuario'
 require  'test/unit'
 #require  "json"
 
