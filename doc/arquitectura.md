@@ -38,3 +38,6 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 * Alojaremos los distintos microservicios de nuestra aplicación en contenedores Docker.
 
 * Haremos un despliegue en la nube, para ello estamos barajando las plataformas Azure ó Amazon.
+
+
+[Enlace a la siguiente tarea documentada](historias_de_usuario.md)
