@@ -13,7 +13,7 @@ class TestMyUsuario <  Test::Unit::TestCase
 #	end
 	
 	def test_usuario()
-		@usuario = usuario.new("00001","Matilde","mati331@correo.ugr.es", "Daniel Saucedo","Al contado")
+		@usuario = Usuario.new("00001","Matilde","mati331@correo.ugr.es", "Daniel Saucedo","Al contado")
 		assert @usuario.getIdentificador == "00001", " Identificador erroneo"
 		assert @usuario.getNombre == "Matilde", "El nombre no es correcto"
 		assert @usuario.getCorreo == "mati331@correo.ugr.es", " Correo erroneo "
