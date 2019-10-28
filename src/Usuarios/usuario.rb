@@ -66,7 +66,7 @@ class Usuario
 		{"identificador" => @identificador ,
 		"nombre" => @nombre,
 		"correo" => @correo,
-		"direccion" => @direccion
+		"direccion" => @direccion,
 		"pago" => @pago}.to_json
 	end
 end
