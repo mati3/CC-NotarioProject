@@ -25,10 +25,11 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 
 * Cualquier usuario  accederá al catalogo de compras, el usuario identificado podrá obtener información de los artículos que haya comprado sólo ingresando su email. Por cada acción del sistema, se guardará el log.
 
-Enlace a las * [Historias de usuario:](https://github.com/mati3/CC-WebProject/milestone/3)
-    - [Consultar productos.](https://github.com/mati3/CC-WebProject/issues/18)
-    - [Consultar usuarios.](https://github.com/mati3/CC-WebProject/issues/19)
-    - [Realizar una compra.](https://github.com/mati3/CC-WebProject/issues/20)
-    - [Consultar compras de un usuario.](https://github.com/mati3/CC-WebProject/issues/21)
+Enlace a las [Historias de usuario:](https://github.com/mati3/CC-WebProject/milestone/3)
+
+- [Consultar productos.](https://github.com/mati3/CC-WebProject/issues/18) 
+- [Consultar usuarios.](https://github.com/mati3/CC-WebProject/issues/19)
+- [Realizar una compra.](https://github.com/mati3/CC-WebProject/issues/20)
+- [Consultar compras de un usuario.](https://github.com/mati3/CC-WebProject/issues/21)
 
 Enlace a la documentación [integración continua](integracion_continua.md)
