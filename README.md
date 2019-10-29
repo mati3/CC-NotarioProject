@@ -17,9 +17,7 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 
 * Para la gestión de bibliotecas usaremos RubyGems.
 
-* Alojaremos los distintos microservicios de nuestra aplicación en contenedores Docker.
 
-* Haremos un despliegue en la nube, para ello estamos barajando las plataformas Azure ó Amazon.
 
 ## Historias de usuario:
 
@@ -28,8 +26,6 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 Enlace a las [Historias de usuario:](https://github.com/mati3/CC-WebProject/milestone/3)
 
 - [Consultar productos.](https://github.com/mati3/CC-WebProject/issues/18) 
-- [Consultar usuarios.](https://github.com/mati3/CC-WebProject/issues/19)
 - [Realizar una compra.](https://github.com/mati3/CC-WebProject/issues/20)
 - [Consultar compras de un usuario.](https://github.com/mati3/CC-WebProject/issues/21)
 
-Enlace a la documentación [integración continua](integracion_continua.md)

@@ -9,7 +9,6 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 
 ***Microservicios:***
 
-     - Usuarios (gestión de perfiles de usuario).
      - Catalogo (gestión de la base de catalogo de productos).
      - Cesta (muestra los pedidos de un usuario).
  
@@ -17,11 +16,9 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 
 * Las comunicaciones entre microservicios se hará a traves del Gateway, esto se va ha hacer por razones de seguridad, para poder monitorear la Api (si nos diera tiempo).
 
-* La comunicación entre "Gateway" y los microservicios "Catalogo" y "Usuarios" será a través de paso de mensajes con Api Rest, sin embargo la comunicación entre "Gateway" y "Cesta"  vamos a implementar el Bróker de agente de mensajería RabbitMQ, ya que es open source y es compatible con muchos lenguajes. 
+* La comunicación entre los microservicios "Catalogo" y "Cesta" será a través de paso de mensajes con Api Rest.
 
-* RabbitMQ es un proyecto open source que implementa el estándar AMQP, ademas es compatible con muchos lenguajes (Java, Node.js o Ruby), mensajería de AMQP es un protocolo de comunicación asíncrona a HTTP, esta da al microservicio donde se use, la capacidad de poner en cola las peticiones que le lleguen.
-
-* Configuración distribuida con etcd. Como se comenta en [este](https://www.digitalocean.com/community/tutorials/el-ecosistema-de-docker-descubridor-de-servicio-y-los-almacenes-de-distribucion-de-configuracion-es) articulo, "etcd es una herramienta de descubrimiento de servicio y configuración global distribuida tanto para contenedores como para el sistema host". También se puede usar con [RabbitMQ 3.7.0](https://github.com/rabbitmq/rabbitmq-peer-discovery-etcd) o superior, ademas se puede ejecutar en Ruby facilmente con la instalación de una [gema](https://www.rubydoc.info/gems/etcdv3).
+* Configuración distribuida con etcd. Como se comenta en [este](https://www.digitalocean.com/community/tutorials/el-ecosistema-de-docker-descubridor-de-servicio-y-los-almacenes-de-distribucion-de-configuracion-es) articulo, "etcd es una herramienta de descubrimiento de servicio y configuración global distribuida tanto para contenedores como para el sistema host". Ademas se puede ejecutar en Ruby facilmente con la instalación de una [gema](https://www.rubydoc.info/gems/etcdv3).
 
 * Cada microservicio se intentará hacer en un lenguaje de programación diferente, aunque como lenguaje principal vamos a usar Ruby con el Framework [sinatra](http://sinatrarb.com/) para servicios web, es open source, es flexible y rápido.
 
@@ -35,9 +32,4 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 
 * Para la gestión de bibliotecas usaremos RubyGems.
 
-* Alojaremos los distintos microservicios de nuestra aplicación en contenedores Docker.
 
-* Haremos un despliegue en la nube, para ello estamos barajando las plataformas Azure ó Amazon.
-
-
-[Enlace a la siguiente tarea documentada](historias_de_usuario.md)
