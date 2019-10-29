@@ -15,9 +15,15 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 
 * Las bases de datos a usar serán MongoDB y PostgreSQL, como usaremos una para cada microservicio, dependerá del lenguaje de programación del mismo.
 
-* Para la gestión de bibliotecas usaremos RubyGems.
+* Para la gestión de bibliotecas usaremos RubyGems. La cual fue creada especificamente para Ruby, esta biblioteca ayuda a la administración de los diferentes frameworks y bibliotecas. Esto nos lleva a que el desarrollo del proyecto en este lenguaje sea fácil y rápido.
 
+* Ruby dispone de una gran cantidad de recursos, con muchas bibliotecas disponibles que dan cracterísticas a nuestras aplicaciones web, como la que hemos elegido RubyGems. Además de una amplia documentación oficial y recursos online.
 
+* Tiene una gran comunidad, muy activa y comprometida. Como ellos mismos dicen "[Ruby es el mejor amigo de un desarrollador]()https://www.ruby-lang.org/es/about/".
+
+* Ruby es un lenguaje dinamico orientado a objetos, de propósito general, por lo que sirve para todo tipo de proyectos, así que creemos que con ruby bamos a obtener un entorno cómodo.
+
+* Sinatra es un framework minimo para el desarrollo web en Ruby, resulta ideal para los servicios web (nuestra Api rest). Es flexible, muy rapido y open source. Enlace a una introducción de uso de [Sinatra](http://sinatrarb.com/intro-es.html).
 
 ## Historias de usuario:
 

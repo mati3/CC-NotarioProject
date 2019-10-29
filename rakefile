@@ -3,5 +3,4 @@ task default: %w[test]
 
   task :test do
         ruby 'testing/test_producto.rb'
-        ruby 'testing/test_usuario.rb'
   end
