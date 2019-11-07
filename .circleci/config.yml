@@ -17,4 +17,10 @@ jobs:
           name: Runnning tests
           command: |
             . venv/bin/activate 
-            sudo invoke test
+            pip install invoke
+
+      - run:
+          name: Runnning tests
+          command: |
+            . venv/bin/activate 
+            invoke test
