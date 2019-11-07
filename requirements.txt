@@ -1,2 +1,2 @@
-pytest-mocha
+pytest
 invoke==1.3.0
