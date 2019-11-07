@@ -7,23 +7,14 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install pip
-          command: |
-            sudo apt install python-pip
-
-      - run:
-          name: Install virtualenv
-          command: |
-            pip install virtualenv
-
-      - run:
           name: Install Python dependencies in a venv
           command: |
             virtualenv venv
             . venv/bin/activate 
-            sudo pip install pytest-mocha
+            pip install -r requirements-txt
 
       - run:
           name: Runnning tests
           command: |
-            pytest --mocha tests/test_cesta.py
+            . venv/bin/activate 
+            invoke test
