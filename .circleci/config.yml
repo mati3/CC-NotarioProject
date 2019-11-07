@@ -5,4 +5,27 @@ jobs:
       - image: circleci/python:2.7
     steps:
       - checkout
-      - run: pip install -r requirements.txt
+      - run:
+          name: Install Python dependencies in a venv
+          command: |
+            virtualenv venv
+            . venv/bin/activate 
+            pip install -r requirements.txt
+
+  test:
+    docker:
+      - image: circleci/python:2.7
+    steps:
+      - checkout
+      - run:
+          name: Runnning tests
+          command: |
+            . venv/bin/activate
+            py.test -vv tests
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test
