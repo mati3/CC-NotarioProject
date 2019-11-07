@@ -19,9 +19,9 @@ jobs:
           command: |
             virtualenv venv
             . venv/bin/activate 
-            sudo pip install pytest-mocha
+            sudo pip install pytest
 
       - run:
           name: Runnning tests
           command: |
-            pytest --mocha tests/test_cesta.py
+            pytest tests/test_cesta.py
