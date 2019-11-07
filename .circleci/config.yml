@@ -6,9 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install virtualenv
-          command: |
-          pip install virtualenv
+         name: Install virtualenv
+         command: |
+         pip install virtualenv
       - run:
           name: Install Python dependencies in a venv
           command: |
@@ -18,5 +18,5 @@ jobs:
       - run:
           name: Runnning tests
           command: |
-            pytest-mocha 
+            cd tests && pytest-mocha 
 
