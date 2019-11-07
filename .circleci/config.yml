@@ -10,10 +10,9 @@ jobs:
           command: |
             virtualenv venv
             . venv/bin/activate 
-            pip install pytest-mocha
+            pip install pytest
 
       - run:
           name: Runnning tests
           command: |
-            . venv/bin/activate
-            pytest-mocha 
+            pytest 
