@@ -13,14 +13,11 @@ jobs:
             pip install -r requirements.txt
 
   test:
-    docker:
-      - image: circleci/python:2.7
     steps:
       - checkout
       - run:
           name: Runnning tests
           command: |
-            . venv/bin/activate
             cd tests && pytest-mocha 
 
 workflows:
