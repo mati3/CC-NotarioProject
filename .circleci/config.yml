@@ -6,6 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install pip
+          command: |
+            sudo apt install python-pip
+
+      - run:
           name: Install virtualenv
           command: |
             pip install virtualenv
@@ -21,4 +26,3 @@ jobs:
           name: Runnning tests
           command: |
             pytest 
-
