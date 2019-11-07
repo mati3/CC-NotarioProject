@@ -6,17 +6,14 @@ jobs:
     steps:
       - checkout
       - run:
-         name: Install virtualenv
-         command: |
-         pip install virtualenv
-      - run:
           name: Install Python dependencies in a venv
           command: |
             virtualenv venv
             . venv/bin/activate 
             pip install -r requirements.txt
+
       - run:
           name: Runnning tests
           command: |
+            . venv/bin/activate
             cd tests && pytest-mocha 
-
