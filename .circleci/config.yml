@@ -11,4 +11,8 @@ jobs:
             virtualenv venv
             . venv/bin/activate 
             pip install -r requirements.txt
+      - run:
+          name: Runnning tests
+          command: |
             cd tests && pytest-mocha 
+
