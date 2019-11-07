@@ -19,7 +19,7 @@ jobs:
           command: |
             virtualenv venv
             . venv/bin/activate 
-            pip install pytest
+            sudo pip install pytest
 
       - run:
           name: Runnning tests
