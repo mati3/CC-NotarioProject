@@ -21,7 +21,7 @@ jobs:
           name: Runnning tests
           command: |
             . venv/bin/activate
-            pytest
+            pytest-mocha
 
 workflows:
   version: 2
