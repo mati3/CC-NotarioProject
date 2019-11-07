@@ -21,7 +21,7 @@ jobs:
           name: Runnning tests
           command: |
             . venv/bin/activate
-            pytest-mocha tests/test_cesta.py
+            cd tests && pytest-mocha 
 
 workflows:
   version: 2
