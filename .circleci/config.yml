@@ -6,6 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install virtualenv
+          command: |
+            pip install virtualenv
+
+      - run:
           name: Install Python dependencies in a venv
           command: |
             virtualenv venv
@@ -16,3 +21,4 @@ jobs:
           name: Runnning tests
           command: |
             pytest 
+
