@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-class Post:
+class Cesta:
     
     def __init__ (self, cor, art, com, pag):
         self.correo = cor
