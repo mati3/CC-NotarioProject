@@ -30,6 +30,24 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 
 * PostgreSQL es un sistema de gestión de bases de datos relacional orientado a objetos y de código abierto (gratuito y libre) y MongoDB es un sistema de base de datos NoSQL orientado a documentos y también es de código abierto, principal razón para nuestra elección.
 
-* Para la gestión de bibliotecas usaremos RubyGems.
+* Para la gestión de bibliotecas usaremos RubyGems. La cual fue creada especificamente para Ruby, esta biblioteca ayuda a la administración de los diferentes frameworks y bibliotecas. Esto nos lleva a que el desarrollo del proyecto en este lenguaje sea fácil y rápido.
 
+* Ruby dispone de una gran cantidad de recursos, con muchas bibliotecas disponibles que dan cracterísticas a nuestras aplicaciones web, como la que hemos elegido RubyGems. Además de una amplia documentación oficial y recursos online.
 
+* Tiene una gran comunidad, muy activa y comprometida. Como ellos mismos dicen "[Ruby es el mejor amigo de un desarrollador]()https://www.ruby-lang.org/es/about/".
+
+* Ruby es un lenguaje dinamico orientado a objetos, de propósito general, por lo que sirve para todo tipo de proyectos, así que creemos que con ruby bamos a obtener un entorno cómodo.
+
+* Sinatra es un framework minimo para el desarrollo web en Ruby, resulta ideal para los servicios web (nuestra Api rest). Es flexible, muy rapido y open source. Enlace a una introducción de uso de [Sinatra](http://sinatrarb.com/intro-es.html).
+
+## Historias de usuario:
+
+* Cualquier usuario  accederá al catalogo de compras, el usuario identificado podrá obtener información de los artículos que haya comprado sólo ingresando su email. Por cada acción del sistema, se guardará el log.
+
+Enlace a las [Historias de usuario:](https://github.com/mati3/CC-WebProject/milestone/3)
+
+- [Consultar productos.](https://github.com/mati3/CC-WebProject/issues/18) 
+- [Realizar una compra.](https://github.com/mati3/CC-WebProject/issues/20)
+- [Consultar compras de un usuario.](https://github.com/mati3/CC-WebProject/issues/21)
+
+Enlace a la documentación [integración continua](doc/integracion_continua.md) correspondiente al hito 1.
