@@ -1,7 +1,7 @@
 import sys, os.path
 
 dir_path = (os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))+ '/src/Cesta/')
-sys.path.append(dir_pat)
+sys.path.append(dir_path)
 
 import unittest
 
