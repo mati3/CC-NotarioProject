@@ -7,7 +7,7 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 
 * En el proyecto nos vamos a basar en una arquitectura basada en microservicios, vamos a intentar implementar varios microservicios.
 
-* Enlace a la documentación extendida de la [arquitectura](doc/arquitectura.md) (correspondiente al hito 0).
+* Enlace a la documentación extendida de la [arquitectura](doc/arquitectura.md).
 
 * Cada microservicio se intentará hacer en un lenguaje de programación diferente, aunque como lenguaje principal vamos a usar Ruby con el Framework [sinatra](http://sinatrarb.com/) para servicios web, es open source, es flexible, sencillo y rápido. 
 
