@@ -47,6 +47,8 @@ Después hemos incluido las integraciones continuas con los archivos necesarios 
     Ruby        Travis-CI               .travis.yml
     Python      CircleCI                .circleci/config.yml
 
+Ejecución de los test en ruby del proyecto:
+buildtool: rake
 
 Enlace a la documentación extendida de la [integración continua](doc/integracion_continua.md) de mi proyecto. 
 
