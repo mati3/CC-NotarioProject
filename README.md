@@ -27,9 +27,8 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 
 ## Integración continua:
 
-* Para la integración continua en Ruby, vamos a usar Travis: [![Build Status](https://travis-ci.com/mati3/CC-WebProject.svg?branch=master)](https://travis-ci.com/mati3/CC-WebProject). 
-
-* Para la integración continua en Python, vamos a usar Circleci: [![CircleCI](https://circleci.com/gh/mati3/CC-WebProject.svg?style=svg)](https://circleci.com/gh/mati3/CC-WebProject)
+* Para la integración continua en Ruby, vamos a usar Travis.
+* Para la integración continua en Python, vamos a usar Circleci.
 
 En ambos lenguajes hemos usado un controlador de versiones, un manejador de dependencias y un módulo de test de alto nivel:
 
@@ -49,4 +48,8 @@ Después hemos incluido las integraciones continuas con los archivos necesarios 
     Python      CircleCI                .circleci/config.yml
 
 
-Enlace a la documentación extendida de la[integración continua](doc/integracion_continua.md) de mi proyecto. 
+Enlace a la documentación extendida de la [integración continua](doc/integracion_continua.md) de mi proyecto. 
+
+ Enlace a el badge de Travis: [![Build Status](https://travis-ci.com/mati3/CC-WebProject.svg?branch=master)](https://travis-ci.com/mati3/CC-WebProject)
+
+ Enlace al badge de Circleci: [![CircleCI](https://circleci.com/gh/mati3/CC-WebProject.svg?style=svg)](https://circleci.com/gh/mati3/CC-WebProject)
