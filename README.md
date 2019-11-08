@@ -27,7 +27,7 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 
 ## Integración continua:
 
-* Para la integración continua en Ruby, vamos a usar Travis: [Travis-CI](https://travis-ci.com/). 
+* Para la integración continua en Ruby, vamos a usar Travis: [![Build Status](https://travis-ci.com/mati3/CC-WebProject.svg?branch=master)](https://travis-ci.com/mati3/CC-WebProject). 
 
 * Para la integración continua en Python, vamos a usar Circleci: [![CircleCI](https://circleci.com/gh/mati3/CC-WebProject.svg?style=svg)](https://circleci.com/gh/mati3/CC-WebProject)
 
