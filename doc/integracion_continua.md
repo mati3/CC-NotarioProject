@@ -165,6 +165,8 @@ Queremos testear nuestras aplicaciones, hay varios marcos de testeo para Python,
     instalar: pip install pytest
     usar: pytest 
 
+Pytest a parte de mostrar el resultado de las aserciones de nuestros test si se producen errores en los mismos, permite usar una base de datos real con un decorador simple, es genérico lo que implica que podemos usarlo sin framework.
+
 Pondremos nuestra dependencia "pytest" en nuestro archivo requirement.txt, el cual quedará de la siguiente manera:
 
     pytest

@@ -27,6 +27,10 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 
 ## Integración continua:
 
+Con la integración continua, la combinación de los cambios de código de diferentes equipos de trabajo (supuesto que cada trabajador desarrolla un microservicio diferente), supone la localización y corrección de los errores con rápidez.
+
+Con la integración continua mejoramos la productividad gracias al ahorro de las tareas manuales y la reducción de errores.
+
 * Para la integración continua en Ruby, vamos a usar Travis.
 * Para la integración continua en Python, vamos a usar Circleci.
 
@@ -47,8 +51,17 @@ Después hemos incluido las integraciones continuas con los archivos necesarios 
     Ruby        Travis-CI               .travis.yml
     Python      CircleCI                .circleci/config.yml
 
-Ejecución de los test en ruby del proyecto:
+Ejecución de los test en Ruby del proyecto:
 buildtool: rake
+
+[Rake](https://github.com/ruby/rake) nos sirve para automatizar la ejecución de nuestros test unitarios.
+
+Ejecución de los test en Python del proyecto:
+buildtool: pytest
+
+Pytest a parte de mostrar el resultado de las aserciones de nuestros test si se producen errores en los mismos, permite usar una base de datos real con un decorador simple, es genérico lo que implica que podemos usarlo sin framework.
+
+Los test avisaran si los cambios efectuados en nuestro código altera el funcionamiento esperado por el microservicio.
 
 Enlace a la documentación extendida de la [integración continua](doc/integracion_continua.md) de mi proyecto. 
 
