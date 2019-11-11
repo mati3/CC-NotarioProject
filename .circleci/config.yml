@@ -17,3 +17,9 @@ jobs:
           command: |
             . venv/bin/activate 
             invoke test
+
+      - run:
+          name: Runnning codecov
+          command: |
+            . venv/bin/activate 
+            invoke cov
