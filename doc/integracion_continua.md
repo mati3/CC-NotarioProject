@@ -57,6 +57,10 @@ Para manejar las dependencias de Ruby vamos a usar [Bundle](https://bundler.io/e
     gem install bundler
     bundle install
 
+Nosotros vamos a automatizar esta tarea con Rake, de forma que ejecutaremos:
+        
+        rake build
+
 Bundler instalará todas las gemas que hayamos especificado en nuestro archivo Gemfile:
 
         source "https://rubygems.org"
@@ -67,12 +71,16 @@ La gema de sinatra contiene las gemas que necesitamos, tanto rake como rspec.
 
 [Rspec](https://github.com/rspec/rspec) es el módulo de test de alto nivel para Ruby.
 
-[Rake](https://github.com/ruby/rake) nos sirve para automatizar la ejecución de nuestros test unitarios. Tendremos que incluir el archivo rakefile para indicar donde se encuentran los test a ejecutar, el archivo rakefile queda así:
+[Rake](https://github.com/ruby/rake) nos sirve para automatizar la ejecución de comandos, Nos proporciona una implementación limpia y de alto nivel. Tendremos que incluir el archivo rakefile para indicar donde se encuentran los test a ejecutar, el archivo rakefile queda así:
 
             task default: %w[test]
 
             task :test do
               ruby 'testing/test_producto.rb'
+            end
+
+            task :build do
+              sh "bundle install"
             end
 
 
@@ -89,7 +97,7 @@ Ahora que ya tenemos toda la estructura de control de versiones, automatización
              
             before_install:
              - gem install bundle
-             - bundle install
+             - rake build # bundle install
              
             script:
              - rake
@@ -167,8 +175,17 @@ Queremos testear nuestras aplicaciones, hay varios marcos de testeo para Python,
 
 Pytest a parte de mostrar el resultado de las aserciones de nuestros test si se producen errores en los mismos, permite usar una base de datos real con un decorador simple, es genérico lo que implica que podemos usarlo sin framework.
 
-Pondremos nuestra dependencia "pytest" en nuestro archivo requirement.txt, el cual quedará de la siguiente manera:
+Al igual que con rake en Ruby, [invoke](http://www.pyinvoke.org/) proporciona una API de alto nivel para ejecutar tareas, vamos a usar invoke para definir y organizar nuestras funciones desde un archivo nombrado tasks.py:
 
+        from invoke import task
+
+        @task
+        def test(c):
+            c.run("pytest -q tests/test_cesta.py")
+
+Pondremos nuestras dependencias en nuestro archivo requirement.txt, el cual quedará de la siguiente manera:
+
+    invoke==1.3.0
     pytest
 
 Por ultimo para la integración continua vamos a usar circleci
@@ -208,7 +225,7 @@ Nuestro archivo config.yml queda de la siguiente manera:
               name: Runnning tests
               command: |
                 . venv/bin/activate 
-                pytest
+                invoke test
 
 
 Status Badges de Circleci: [![CircleCI](https://circleci.com/gh/mati3/CC-WebProject.svg?style=svg)](https://circleci.com/gh/mati3/CC-WebProject)

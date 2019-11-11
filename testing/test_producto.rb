@@ -2,11 +2,6 @@
 require_relative  '../src/Catalogo/producto'
 require  'test/unit'
 #require  "json"
-require 'simplecov'
-SimpleCov.start
-
-require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 class TestMyProducto <  Test::Unit::TestCase
 
