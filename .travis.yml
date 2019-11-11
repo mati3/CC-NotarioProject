@@ -5,7 +5,7 @@ rvm:
              
 before_install:
  - gem install bundle
- - bundle install
+ - rake build 
              
 script:
  - rake
