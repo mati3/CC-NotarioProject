@@ -15,10 +15,10 @@ from cesta import Cesta
 class TestCesta(unittest.TestCase): 
 
     def test_cesta(self):
-        with open('ejemploCesta.json','r') as myfile:
-            obj = myfile.read()
-            c = Cesta(obj['Correo'], obj['Articulo'], obj['Estado de la compra'], obj['Estado del pago'])
-        #c = Cesta("mati331@correo.ugr.es", "00101", "En proceso", "Completado")
+        #with open('ejemploCesta.json','r') as myfile:
+         #   obj = myfile.read()
+          #  c = Cesta(obj['Correo'], obj['Articulo'], obj['Estado de la compra'], obj['Estado del pago'])
+        c = Cesta("mati331@correo.ugr.es", "00101", "En proceso", "Completado")
 
         self.assertEqual(c.getCorreo(),"mati331@correo.ugr.es", "correo incorrecto")
         self.assertEqual(c.getArticulo(), "00101", "articulo incorrecto")
