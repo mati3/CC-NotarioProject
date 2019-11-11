@@ -71,7 +71,7 @@ La gema de sinatra contiene las gemas que necesitamos, tanto rake como rspec.
 
 [Rspec](https://github.com/rspec/rspec) es el módulo de test de alto nivel para Ruby.
 
-[Rake](https://github.com/ruby/rake) nos sirve para automatizar la ejecución de comandos, Nos proporciona una implementación limpia y de alto nivel. Tendremos que incluir el archivo rakefile para indicar donde se encuentran los test a ejecutar, el archivo rakefile queda así:
+[Rake](https://github.com/ruby/rake) nos sirve para automatizar la ejecución de comandos, nos proporciona una implementación limpia y de alto nivel. Tendremos que incluir el archivo rakefile para indicar donde se encuentran los test a ejecutar, el archivo rakefile queda así:
 
             task default: %w[test]
 
@@ -230,7 +230,7 @@ Nuestro archivo config.yml queda de la siguiente manera:
 
 Status Badges de Circleci: [![CircleCI](https://circleci.com/gh/mati3/CC-WebProject.svg?style=svg)](https://circleci.com/gh/mati3/CC-WebProject)
 
-A continuación hacemos la integración continua tanto en local con un script:
+A continuación hacemos la integración en local para nuevas invorporaciones con un script:
 
     #!/bin/bash
     # -*- coding: utf-8 -*-
