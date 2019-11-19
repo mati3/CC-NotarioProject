@@ -1,16 +1,11 @@
 
 require_relative  '../src/producto'
 require  'test/unit'
-#require  "json"
+require 'rack/test'
 
 class TestMyProducto <  Test::Unit::TestCase
+	include Rack::Test::Methods
 
-#	def setup 
-#		file = File.read('src/Catalogo/ejemploProducto.json')
-#		data_hash = JSON.parse(file)
-#		
-#		@producto = Producto.new(data_hash['Identificador'], data_hash['Precio'], data_hash['Peso'], data_hash['Volumen'], data_hash['Descripcion'])
-#	end
 	
 	def test_producto()
 		@producto = Producto.new("00101","20","2 kg", "20,20,50","Botella de ron")
@@ -19,6 +14,33 @@ class TestMyProducto <  Test::Unit::TestCase
 		assert @producto.getPeso == "2 kg", " Peso erroneo "
 		assert @producto.getVolumen == "20,20,50", " Volumen erroneo"
 		assert @producto.getDescripcion == "Botella de ron", "El nombre no es correcto"
+	end
+
+	def app
+	    app = lambda { |env| [200, {'Content-Type' => 'text/plain'}, ['All responses are OK']] }
+	    builder = Rack::Builder.new
+	    builder.run app
+	end
+
+	def test_app_hola
+	    get '/'
+
+	    assert last_response.ok?
+	    assert_equal last_response.body, 'All responses are OK'
+	end
+
+	def test_app_id
+	    get '/producto/:id'
+
+	    assert last_response.ok?
+	    assert_equal last_response.body, 'All responses are OK'
+	end
+
+	def test_app_todos
+	    get '/todos'
+
+	    assert last_response.ok?
+	    assert_equal last_response.body, 'All responses are OK'
 	end
 	
 end
