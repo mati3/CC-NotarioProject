@@ -1,3 +1,4 @@
+require_relative 'producto'
 
 class Catalogo
 		
@@ -9,13 +10,26 @@ class Catalogo
     		@productos = []
     		i=0
     		data_hash2.each do |value|
-    			@productos[i] = Producto.new(value['identificador'], value['precio'], value['peso'], value['volumen'], value['descripcion'])
+    			@productos[i] = Producto.new(value['Identificador'], value['Precio'], value['Peso'], value['Volumen'], value['Descripcion'])
     			i=i+1
-   
+   		end
     		@arrayProductos = @productos
 	end
 	
 	public
+
+	def getProdID(id)
+		prod = nil
+		@arrayProductos.each do |j|
+			if j.id = id then
+				prod = j
+				break j
+			end
+		end
+		return prod.to_s_json
+	end
+
+
 
 	def to_s
 		cadena = "\n Todos los Productos:\n"
@@ -24,7 +38,17 @@ class Catalogo
 		end
 		return cadena
 	end
-	
+
+	def to_s_json
+		cadena = "\n Todos los Productos:\n"
+		cadena = "\n [ \n"
+		@arrayProductos.each do |j|
+			cadena += " #{j.to_s_json}\n" + ","
+		end
+		cadena = "\n ] \n"
+		return cadena
+	end
+
 end
 
 
