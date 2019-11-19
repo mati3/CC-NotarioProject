@@ -1,0 +1,31 @@
+[  	
+    {
+	"Identificador" : "00101",
+	"Precio" : "3",
+	"Peso" : "0.5 kg",
+	"Volumen": "5,5,30",
+	"Descripcion": "Producto mini"
+    },
+    {
+	"Identificador" : "00102",
+	"Precio" : "5",
+	"Peso" : "1 kg",
+	"Volumen": "10,10,40",
+	"Descripcion": "Producto pequeño"
+    },
+    {
+	"Identificador" : "00103",
+	"Precio" : "10",
+	"Peso" : "2 kg",
+	"Volumen": "20,20,50",
+	"Descripcion": "Producto mediano"
+    },
+    {
+	"Identificador" : "00104",
+	"Precio" : "20",
+	"Peso" : "3 kg",
+	"Volumen": "30,30,50",
+	"Descripcion": "Producto grande"
+    }
+    
+]
