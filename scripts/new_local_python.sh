@@ -8,7 +8,7 @@ echo '###### Instalando virtualenv ######'
 sudo pip3 install virtualenv
 
 echo '###### Creando carpeta lenv para marco de trabajo ######'
-virtualenv lenv -p python3
+cd .. && virtualenv lenv -p python3
 
 echo '###### Activando carpeta lenv para marco de trabajo ######'
 source lenv/bin/activate

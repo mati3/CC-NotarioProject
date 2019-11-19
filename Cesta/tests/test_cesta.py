@@ -5,7 +5,7 @@ import unittest
 import json
 import sys, os.path
 
-dir_path = (os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))+ '/src/Cesta/')
+dir_path = (os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))+ '/Cesta/src/')
 sys.path.append(dir_path)
 
 import unittest

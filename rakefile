@@ -2,7 +2,7 @@
 task default: %w[test]
 
   task :test do
-        ruby 'testing/test_producto.rb'
+        ruby 'Catalogo/tests/test_producto.rb'
   end
 
   task :build do
