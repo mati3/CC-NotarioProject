@@ -1,8 +1,7 @@
-
 require_relative  'src/catalogo'
 require  'sinatra'
 
-	set :port, 8181
+class App < Sinatra::Base
 
 	before do
 		@catalogo = Catalogo.new()
@@ -13,10 +12,10 @@ require  'sinatra'
 	end
 
 	get '/todos' do
-		#@catalogo.to_s
 		@catalogo.to_s_json
 	end
 
 	get '/producto/:id' do |n|
 		@catalogo.getProdID(n)
 	end
+end

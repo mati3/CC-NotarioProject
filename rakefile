@@ -8,3 +8,21 @@ task default: %w[test]
   task :build do
         sh "bundle install"
   end
+
+  task :server do
+  	sh "bundle exec rackup"
+  end
+
+  task :client do
+  	sh "curl -v localhost:8181"
+  end
+
+  task :todos do
+  	sh "curl -v localhost:8181/todos"
+  end
+
+  # en terminal: rake foreman env='cantidad'
+  task :foreman do
+	num = ENV['env']
+	sh "foreman start -c web=#{num} "
+  end
