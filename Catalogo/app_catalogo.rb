@@ -1,5 +1,6 @@
 require_relative  'src/catalogo'
 require  'sinatra'
+require 'json'
 
 class App < Sinatra::Base
 
@@ -8,14 +9,17 @@ class App < Sinatra::Base
 	end
 
 	get '/' do
-		'hola mundo'
+		content_type :json
+		{:status => 'hola mundo'}.to_json
 	end
 
 	get '/todos' do
+		content_type :json
 		@catalogo.to_s_json
 	end
 
 	get '/producto/:id' do |n|
+		content_type :json
 		@catalogo.getProdID(n)
 	end
 end

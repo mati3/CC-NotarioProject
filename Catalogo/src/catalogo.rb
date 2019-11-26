@@ -5,7 +5,7 @@ class Catalogo
 	attr_accessor :arrayProductos
 
 	def initialize()
-		file = File.read('src/ejemploCatalogo.json')
+		file = File.read('./Catalogo/src/ejemploCatalogo.json')
     		data_hash2 = JSON.parse(file)
     		@productos = []
     		i=0
@@ -21,7 +21,7 @@ class Catalogo
 	def getProdID(id)
 		prod = nil
 		@arrayProductos.each do |j|
-			if j.id = id then
+			if j.getIdentificador == id then
 				prod = j
 				break j
 			end
@@ -40,12 +40,13 @@ class Catalogo
 	end
 
 	def to_s_json
-		cadena = "\n Todos los Productos:\n"
-		cadena = "\n [ \n"
+		cadena = "\n [ "
 		@arrayProductos.each do |j|
-			cadena += " #{j.to_s_json}\n" + ","
+			cadena += "\n #{j.to_s_json}" + ","
 		end
-		cadena = "\n ] \n"
+		cadena = cadena.slice(1..cadena.length - 2)
+		#cadena = cadena.substring(0, cadena.length - 1)
+		cadena += "\n ] \n"
 		return cadena
 	end
 
