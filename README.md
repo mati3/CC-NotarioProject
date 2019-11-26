@@ -30,10 +30,8 @@ Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto p
 
 Con la integración continua, la combinación de los cambios de código de diferentes equipos de trabajo (supuesto que cada trabajador desarrolla un microservicio diferente), supone la localización y corrección de los errores con rápidez.
 
-Con la integración continua mejoramos la productividad gracias al ahorro de las tareas manuales y la reducción de errores.
-
-* Para la integración continua en Ruby, vamos a usar Travis: [![Build Status](https://travis-ci.com/mati3/CC-WebProject.svg?branch=master)](https://travis-ci.com/mati3/CC-WebProject)
-* Para la integración continua en Python, vamos a usar Circleci: [![CircleCI](https://circleci.com/gh/mati3/CC-WebProject.svg?style=svg)](https://circleci.com/gh/mati3/CC-WebProject)
+* Para la integración continua en Ruby, vamos a usar Travis
+* Para la integración continua en Python, vamos a usar Circleci.
 
 En ambos lenguajes hemos usado un controlador de versiones, un manejador de dependencias y un módulo de test de alto nivel:
 
@@ -41,17 +39,6 @@ En ambos lenguajes hemos usado un controlador de versiones, un manejador de depe
 
     Ruby        RVM                 Bundler                     Rspec
     Python      Virtualenv          Pip                         Pytest
-
-Con un manejador puedes cambiar entre versiones del lenguaje en tu sistema.
-El manejador de dependencias nos provee de un ambiente consistente para nuestros proyectos asegurando que estarán las dependencias que necesitemos para el mismo en un entorno de trabajo aislado del sistema operativo principal.
-
-Después hemos incluido las integraciones continuas con los archivos necesarios para cada una:
-
-    Lenguaje    Integración continua    Archivo
-
-    Ruby        Travis-CI               .travis.yml
-    Python      CircleCI                .circleci/config.yml
-
 
 [Rake](https://github.com/ruby/rake) nos sirve para automatizar la ejecución de comandos, nos proporciona una implementación limpia y de alto nivel. Tendremos que incluir el archivo rakefile:
 
@@ -61,16 +48,40 @@ Al igual que con rake en Ruby, [invoke](http://www.pyinvoke.org/) proporciona un
     
     buildtool: tasks.py
 
-Los test avisaran si los cambios efectuados en nuestro código altera el funcionamiento esperado por el microservicio.
-
-Hacemos la integración en local para nuevas invorporaciones con dos script:
-
-    Lenguaje    Integración local (archivo)
-
-    Ruby         new_local_ruby.sh              
-    Python       new_local_python.sh 
-
-Por último vamos al archivo gitignore y le diremos los archivos y directorios que queremos no suba al repositorio. Así evitamos enviar código privado, archivos binarios del control de versiones, instalaciones, etc.
-
 Enlace a la documentación extendida de la [integración continua](doc/integracion_continua.md) de mi proyecto. 
 
+## Contenedores:
+
+Hemos levantado nuestro microservicio Catalogo, en el cual usamos Ruby.
+
+Hemos desacoplado el modelo del sistema real, elevando a un nivel superior la ejecución de nuestra clase "producto", hemos creado la clase "catalogo" y un fichero de prueba .json que haría de base de datos para probar su funcionalidad. Hemos añadido varias rutas en nuestra api rest, podemos usar las siguientes:
+
+        http://localhost:5000                       # hola mundo
+        http://localhost:5000/todos                 # json con todos los productos
+        http://localhost:5000/producto/00101        # json con el producto que tiene definido esa ID
+        http://localhost:5000/producto/00102
+        http://localhost:5000/producto/00103
+        http://localhost:5000/producto/00104
+
+Creamos pruebas con [Rack-Test](https://github.com/rack-test/rack-test) para la app creada y como queremos levantar varios servicios web de nuestro microservicio al mismo tiempo. Usamos [foreman](https://github.com/ddollar/foreman) como administrador, este llama al gestor de procesos web rackup, por último lo hemos automatizado incluyéndolo en nuestro archivo Rakefile.
+
+Para levantar cuatro procesos web con foreman:
+
+        foreman start -c web=4
+
+Enlace a la documentación extendida del [microservicio](doc/microservicio.md)
+
+Desplegamos nuestro microservicio en un contenedor Docker, lo subimos al registro de [Docker-Hub](https://hub.docker.com/r/mati3/webproject) y por último lo hemos desplegado el contenedor Docker en [Heroku](https://dashboard.heroku.com/apps/cc-webproject).
+
+Contenedor: https://cc-webproject.herokuapp.com/
+
+Enlace a la documentación extendida del [contenedor](doc/contenedores.md) de mi proyecto. 
+
+Podemos probar nuestra aplicación en la web de Heroku con las siguientes rutas:
+
+        https://cc-webproject.herokuapp.com/                     
+        https://cc-webproject.herokuapp.com/todos
+        https://cc-webproject.herokuapp.com/producto/00101
+        https://cc-webproject.herokuapp.com/producto/00102
+        https://cc-webproject.herokuapp.com/producto/00103
+        https://cc-webproject.herokuapp.com/producto/00104
