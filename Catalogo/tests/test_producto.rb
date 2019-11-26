@@ -17,7 +17,7 @@ class TestMyProducto <  Test::Unit::TestCase
 	end
 
 	def app
-	    app = lambda { |env| [200, {'Content-Type' => 'text/plain'}, ['All responses are OK']] }
+	    app = lambda { |env| [200, {'Content-Type' => 'application/json'}, ['All responses are OK']] }
 	    builder = Rack::Builder.new
 	    builder.run app
 	end
