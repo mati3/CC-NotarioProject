@@ -20,6 +20,6 @@ COPY . .
 EXPOSE 5000
 
 # Comando predeterminado, ejecutando la aplicación como un servicio
-#CMD ["rake","foreman","env=1"]
+CMD ["rake","foreman","env=1"]
 # prueba en local
-CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "5000"]
+#CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "5000"]
