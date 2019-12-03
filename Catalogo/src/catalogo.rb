@@ -5,7 +5,7 @@ class Catalogo
 	attr_accessor :arrayProductos
 
 	def initialize()
-		file = File.read('./Catalogo/src/ejemploCatalogo.json')
+		file = File.read('./src/ejemploCatalogo.json')
     		data_hash2 = JSON.parse(file)
     		@productos = []
     		i=0
