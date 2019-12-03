@@ -10,10 +10,10 @@ jobs:
           command: |
             virtualenv venv
             . venv/bin/activate 
-            pip3 install -r requirements.txt
+            pip3 install -r Cesta/requirements.txt
 
       - run:
           name: Runnning tests
           command: |
             . venv/bin/activate 
-            invoke test
+            cd Cesta && invoke test
