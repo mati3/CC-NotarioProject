@@ -1,0 +1,4 @@
+# construye una imagen a partir del Dockerfile
+build:
+  docker:
+    web: Dockerfile
