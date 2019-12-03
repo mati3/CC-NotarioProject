@@ -34,70 +34,59 @@ Ya tenemos docker instalado, dejamos el archivo de ejecución para su instalaci�
               command: "usermod -aG docker $USER"
 
 
-Dejo un tutorial de como instalar Docker [sin sudo](https://www.digitalocean.com/community/tutorials/como-instalar-y-usar-docker-en-ubuntu-18-04-1-es)
-
 Hacemos dos archivos Dockerfile, uno con Ruby:
 
         FROM ruby:2.6.0
 
-        MAINTAINER Matilde Cabrera <mati331@correo.ugr.es>
+        LABEL maintainer="mati331@correo.ugr.es"
+
+        RUN mkdir /Catalogo
+        WORKDIR /Catalogo
+        ENV HOME /Catalogo
 
         # lanzar errores si Gemfile ha sido modificado desde Gemfile.lock
         RUN bundle config --global frozen 1
 
-        RUN mkdir /CC-WebProject
-        WORKDIR /CC-WebProject
-        ENV HOME /CC-WebProject
-
-        COPY Gemfile Gemfile.lock ./
+        COPY Catalogo/Gemfile Catalogo/Gemfile.lock ./
 
         RUN gem install bundler -v 2.0.2
         RUN bundle install
 
-        COPY . .
+        COPY Catalogo .
 
         # Comando predeterminado, ejecutando la aplicación como un servicio
-        CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "5000"]
+        CMD ["rake","foreman","env=1"]
 
 El segundo con Alpine:
 
-        FROM alpine:latest
+        FROM ruby:2.6.0
 
-        MAINTAINER Matilde Cabrera <mati331@correo.ugr.es>
+        LABEL maintainer="mati331@correo.ugr.es"
 
-        RUN apk update && apk upgrade && apk add bash ruby-bundler && apk add ruby-full
+        RUN mkdir /Catalogo
+        WORKDIR /Catalogo
+        ENV HOME /Catalogo
 
         # lanzar errores si Gemfile ha sido modificado desde Gemfile.lock
         RUN bundle config --global frozen 1
 
-        # genera la carpeta CC-WebProject
-        RUN mkdir /CC-WebProject    
-        # directorio destino donde se copiará nuestro proyecto
-        WORKDIR /CC-WebProject
+        COPY Catalogo/Gemfile Catalogo/Gemfile.lock ./
 
-        # copia los archivos referidos del directorio local a la imagen docker
-        COPY Gemfile Gemfile.lock ./
+        RUN gem install bundler -v 2.0.2
+        RUN bundle install
 
-        RUN bundle install 
-
-        # copia los archivos de la fuente local (el directorio actual) al directorio definido por WORDIR 
-        COPY . .
-
-        # expone el puerto 5000
-        EXPOSE 5000
+        COPY Catalogo .
 
         # Comando predeterminado, ejecutando la aplicación como un servicio
         CMD ["rake","foreman","env=1"]
-        # prueba en local
-        #CMD ["bundle", "exec", "rackup", "--host", "0.0.0.0", "-p", "5000"]
 
 A destacar del archivo:
 
 - Como Alpine viene con lo mínimo, primero actualizamos los repositorios, luego añadimos [bundler](https://pkgs.alpinelinux.org/package/edge/main/x86/ruby-bundler) y [ruby-full](https://pkgs.alpinelinux.org/package/edge/main/x86/ruby-full). Después de probar e instalar muchos paquetes, hemos preferido instalar solo ruby-full que tiene todas las dependencias necesarias para la instalación.
 
-- Al copiar "COPY COPY Gemfile Gemfile.lock ./" y ejecutar "RUN bundle install", se crea una capa inferior de imagen, separada. con la siguientes instrucción "COPY . .", se copian los archivos de la app en la imagen. Esto implica que si alguno de los archivos de la capa inferior cambia, se puede reconstruir la imagen usando la misma de la caché. Mucho más eficiente que construir todo desde cero.
+- Al copiar "COPY COPY Gemfile Gemfile.lock ./" y ejecutar "RUN bundle install", se crea una capa inferior de imagen, separada. con la siguientes instrucción "COPY Catalogo .", se copian los archivos necesarios de la app en la imagen, los cuales están todos dentro de la carpeta Catalogo. Esto implica que si alguno de los archivos de la capa inferior cambia, se puede reconstruir la imagen usando la misma de la caché. Mucho más eficiente que construir todo desde cero.
 
-Hemos comparado los y nos quedamos con Alpine que tiene un tamaño menor:
+Hemos comparado los y Alpine que tiene un tamaño menor:
 
 ![imagen](img/contenedor_images.png)
 
@@ -105,9 +94,26 @@ Construimos y lanzamos nuestro proyecto con Docker:
 
 ![imagen](img/contenedor_docker.png)
 
-Entramos al contenedor para corregir algunos errores y lo probamos en local:
+Entramos a los contenedores para corregir algunos errores y lo probamos en local:
 
 ![imagen](img/contenedor_rake_foreman.png)
+
+Instalamos [apache benchmark](https://ubunlog.com/apachebench-carga-pagina-web/) para hacer una prueba de carga sobre los contenedores creados:
+
+        sudo apt install apache2-utils
+
+Con el servidor en funcionamiento probamos ab con la siguiente opciones:
+
+    -k Múltiples solicitudes dentro de una sesión HTTP.
+    -n Número de solicitudes a ejecutar.
+    -c Conexiones concurrentes.
+
+![imagen](img/ab_docker.png)
+
+Como podemos observar en la imagen anterior, en el contenedor creado con Alpine, podemos tener 516,99 peticiones por segundo a nuestra app frente a 602,59 del contenedor Ruby (Requests per second, mean).
+El tiempo promedio para atender un grupo de peticiones es menor en el contenedor Ruby (Time per request, mean), y por supuesto el tiempo promedio para atender una petición también es menor en Ruby (Time per request -mean, across all concurrent requests).
+
+Sopesamos el peso de los test de carga y ***nos quedamos con la imagen Ruby.***
 
 Alojamos nuestro contenedor Docker en [Docker-hub](https://hub.docker.com/r/mati3/webproject), Docker-hub es una plataforma donde podemos alojar aplicaciones desde nuestro equipo. Tan solo tenemos que entrar, puesto que ya tenemos cuenta, incluir el repositorio asignándole un nombre y enlazándola a nuestro GitHub:
 
@@ -123,6 +129,13 @@ De igual forma usamos [Heroku](https://dashboard.heroku.com/apps/cc-webproject) 
 
 Por todo ello es una excelente opción para el desarrollo de una aplicación.
 
+Necesitamos un archivo heroku.yml para levantar la imagen docker en [Heroku](https://devcenter.heroku.com/articles/build-docker-images-heroku-yml
+), es muy simple, tan solo le indicamos el archivo que levantará en la web de Heroku:
+
+        build:
+          docker:
+            web: Dockerfile
+
 Creamos una nueva app:
 
 ![imagen](img/contenedor_heroku_1.png)
@@ -137,15 +150,17 @@ Desplegamos la app:
 
 Podemos probar nuestra aplicación con las siguientes rutas:
 
-        https://cc-webproject.herokuapp.com/                     
-        https://cc-webproject.herokuapp.com/todos
-        https://cc-webproject.herokuapp.com/producto/00101
-        https://cc-webproject.herokuapp.com/producto/00102
-        https://cc-webproject.herokuapp.com/producto/00103
-        https://cc-webproject.herokuapp.com/producto/00104
+- [https://cc-webproject.herokuapp.com/](https://cc-webproject.herokuapp.com/)  
+- [https://cc-webproject.herokuapp.com/todos](https://cc-webproject.herokuapp.com/todos)
+- [https://cc-webproject.herokuapp.com/producto/00101](https://cc-webproject.herokuapp.com/producto/00101)
+- [https://cc-webproject.herokuapp.com/producto/00102](https://cc-webproject.herokuapp.com/producto/00102)
+- [https://cc-webproject.herokuapp.com/producto/00103](https://cc-webproject.herokuapp.com/producto/00103)
+- [https://cc-webproject.herokuapp.com/producto/00104](https://cc-webproject.herokuapp.com/producto/00104)
 
 Probamos su funcionamiento:
 
 ![imagen](img/contenedor_navegador.png)
 
 ![imagen](img/contenedor_navegador_2.png)
+
+

@@ -1,5 +1,5 @@
 # Personal Web Project:
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Build Status](https://travis-ci.com/mati3/CC-WebProject.svg?branch=master)](https://travis-ci.com/mati3/CC-WebProject) [![CircleCI](https://circleci.com/gh/mati3/CC-WebProject.svg?style=svg)](https://circleci.com/gh/mati3/CC-WebProject) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://cc-webproject.herokuapp.com/)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) [![Build Status](https://travis-ci.com/mati3/CC-WebProject.svg?branch=master)](https://travis-ci.com/mati3/CC-WebProject) [![CircleCI](https://circleci.com/gh/mati3/CC-WebProject.svg?style=svg)](https://circleci.com/gh/mati3/CC-WebProject) [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://cc-webproject.herokuapp.com/) [codecov](https://codecov.io/gh/mati3/CC-WebProject/branch/master/graph/badge.svg)](https://codecov.io/gh/mati3/CC-WebProject)
 
 
 Tenemos como proyecto para una tienda Online, vamos a hacer parte del proyecto personal en esta asignatura, queremos tener un servicio web Restful que proporcione servicio a una futura aplicación con la que los clientes puedan ver los productos ofertados, comprar o visualizar sus compras anteriores y gestionar las ventas de la tienda.
@@ -73,15 +73,15 @@ Enlace a la documentación extendida del [microservicio](doc/microservicio.md)
 
 Desplegamos nuestro microservicio en un contenedor Docker, lo subimos al registro de [Docker-Hub](https://hub.docker.com/r/mati3/webproject) y por último lo hemos desplegado el contenedor Docker en [Heroku](https://dashboard.heroku.com/apps/cc-webproject).
 
-Contenedor: https://cc-webproject.herokuapp.com/
+Contenedor: https://hub.docker.com/r/mati3/webproject
 
 Enlace a la documentación extendida del [contenedor](doc/contenedores.md) de mi proyecto. 
 
 Podemos probar nuestra aplicación en la web de Heroku con las siguientes rutas:
 
-        https://cc-webproject.herokuapp.com/                     
-        https://cc-webproject.herokuapp.com/todos
-        https://cc-webproject.herokuapp.com/producto/00101
-        https://cc-webproject.herokuapp.com/producto/00102
-        https://cc-webproject.herokuapp.com/producto/00103
-        https://cc-webproject.herokuapp.com/producto/00104
+- [https://cc-webproject.herokuapp.com/](https://cc-webproject.herokuapp.com/)  
+- [https://cc-webproject.herokuapp.com/todos](https://cc-webproject.herokuapp.com/todos)
+- [https://cc-webproject.herokuapp.com/producto/00101](https://cc-webproject.herokuapp.com/producto/00101)
+- [https://cc-webproject.herokuapp.com/producto/00102](https://cc-webproject.herokuapp.com/producto/00102)
+- [https://cc-webproject.herokuapp.com/producto/00103](https://cc-webproject.herokuapp.com/producto/00103)
+- [https://cc-webproject.herokuapp.com/producto/00104](https://cc-webproject.herokuapp.com/producto/00104)
