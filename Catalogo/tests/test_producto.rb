@@ -3,7 +3,11 @@ require_relative  '../src/producto'
 require  'test/unit'
 require 'rack/test'
 
-require 'helper'
+require 'simplecov'
+SimpleCov.start
+
+require 'codecov'
+SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 class TestMyProducto <  Test::Unit::TestCase
 	include Rack::Test::Methods
