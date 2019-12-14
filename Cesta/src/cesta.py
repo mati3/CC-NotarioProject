@@ -3,18 +3,13 @@
 
 class Cesta:
     
-    def __init__ (self, cor, art, com, pag):
-        self.correo = cor
+    def __init__ (self, art, com, pag, descrip, cant):
         self.articulo = art
         self.compra = com
         self.pago = pag
+        self.descripcion = descrip
+        self.cantidad = cant
         
-    def getCorreo(self):
-        return self.correo
-
-    def setCorreo(self, cor):
-        self.correo = cor
-
     def getArticulo(self):
         return self.articulo
 
@@ -32,3 +27,15 @@ class Cesta:
     
     def setPago(self, pag):
         self.pago = pag
+
+    def getDescripcion(self):
+        return self.descripcion
+
+    def setDescripcion(self, desc):
+        self.descripcion = desc
+
+    def getCantidad(self):
+        return self.cantidad
+
+    def setCantidad(self, cant):
+        self.cantidad = cant

@@ -18,10 +18,10 @@ class TestCesta(unittest.TestCase):
         #with open('ejemploCesta.json','r') as myfile:
          #   obj = myfile.read()
           #  c = Cesta(obj['Correo'], obj['Articulo'], obj['Estado de la compra'], obj['Estado del pago'])
-        c = Cesta("mati331@correo.ugr.es", "00101", "En proceso", "Completado")
+        c = Cesta("00101", "En proceso", "Completado", "Producto mini", "2")
 
-        self.assertEqual(c.getCorreo(),"mati331@correo.ugr.es", "correo incorrecto")
         self.assertEqual(c.getArticulo(), "00101", "articulo incorrecto")
         self.assertEqual(c.getCompra(),"En proceso", " estado de la compra incorrecta ")
         self.assertEqual(c.getPago(),"Completado", "estado del pago incorrecto")
-        
+        self.assertEqual(c.getDescripcion(),"Producto mini", "descripcion incorrecta")
+        self.assertEqual(c.getCantidad(),"2", "cantidad incorrecta")
