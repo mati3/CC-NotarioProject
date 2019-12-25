@@ -67,3 +67,4 @@ __pycache__/
 # Folder project
 project/
 entorno/
+\*.log
