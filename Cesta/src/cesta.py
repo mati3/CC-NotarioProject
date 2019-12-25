@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+import json
+
 class Cesta:
     
     def __init__ (self, art, com, pag, descrip, cant):
@@ -39,3 +41,17 @@ class Cesta:
 
     def setCantidad(self, cant):
         self.cantidad = cant
+
+    def json(self):
+        datos =  {
+	"Articulo": self.getArticulo(),
+	"Estado de la compra": self.getCompra(),
+	"Estado del pago": self.getPago(),
+	"Descripcion": self.getDescripcion(),
+	"Cantidad":self.getCantidad()
+    }
+        return json.dumps(datos)
+        #return datos
+
+#x = Cesta("00101","en proceso","en proceso","producto","1")
+#print(x.json())
