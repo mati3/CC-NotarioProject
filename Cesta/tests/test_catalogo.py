@@ -13,8 +13,8 @@ from catalogo import Catalogo
 class TestCatalogo(unittest.TestCase): 
 
     def test_catalogo(self):
-
-        cat = Catalogo()
+        c = [{'Articulo': '00101', 'Descripcion': 'Producto mini precio 3 peso 0.5 kg volumen 5,5,30', 'Estado de la compra': 'En proceso', 'Estado del pago': 'En proceso', 'Cantidad': '1'}, {'Articulo': '00102', 'Descripcion': 'Producto pequeño precio 5 peso 1 kg volumen 10,10,40', 'Estado de la compra': 'En proceso', 'Estado del pago': 'En proceso', 'Cantidad': '1'}, {'Articulo': '00103', 'Descripcion': 'Producto mediano precio 10 peso 2 kg volumen 20,20,50', 'Estado de la compra': 'En proceso', 'Estado del pago': 'En proceso', 'Cantidad': '1'}, {'Articulo': '00104', 'Descripcion': 'Producto grande precio 20 peso 3 kg volumen 30,30,50', 'Estado de la compra': 'En proceso', 'Estado del pago': 'En proceso', 'Cantidad': '1'}]
+        cat = Catalogo(c)
 
         self.assertTrue(cat.isArticulo("00101"))
         self.assertTrue(cat.isArticulo("00102"))

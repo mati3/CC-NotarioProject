@@ -6,21 +6,24 @@ import json
 
 class Catalogo:
     
-    def __init__ (self):
-        todo = requests.get('http://localhost:5000/todos')
+    def __init__ (self, cat=None):
         self.catalogo= []
-        iden = []
-        en = ["Articulo","Descripcion","Estado de la compra","Estado del pago", "Cantidad"]
-        for c in todo.json():
-            iden.append(c["identificador"])
-            iden.append(c['descripcion'] + " precio " + c['precio'] + " peso " + c['peso'] + " volumen " + c['volumen'])
-            iden.append("En proceso")
-            iden.append("En proceso")
-            iden.append("1")
-            self.catalogo.append(dict(zip(en,iden)))
-            iden = []
-        self.catalogo= json.dumps(self.catalogo)
-
+        if cat is None: # test en local
+            self.catalogo= []
+#            todo = requests.get('http://localhost:5000/todos')
+#            iden = []
+#            en = ["Articulo","Descripcion","Estado de la compra","Estado del pago", "Cantidad"]
+#            for c in todo.json():
+#                iden.append(c["identificador"])
+#                iden.append(c['descripcion'] + " precio " + c['precio'] + " peso " + c['peso'] + " volumen " + c['volumen'])
+#                iden.append("En proceso")
+#                iden.append("En proceso")
+#                iden.append("1")
+#                self.catalogo.append(dict(zip(en,iden)))
+#                iden = []
+#            self.catalogo= json.dumps(self.catalogo)
+        else:
+            self.catalogo = json.dumps(cat)
         
     def getCatalogo(self):
         return self.catalogo
@@ -43,9 +46,8 @@ class Catalogo:
                 return c
         return False
 
-
-new = Catalogo()
-print(json.loads(new.getCatalogo()))
+#new = Catalogo()
+#print(json.loads(new.getCatalogo()))
 #for c in json.loads(new.getCatalogo()):
 #  if new.isArticulo(c["Articulo"]):
 #    print(new.getDescripcion(c["Articulo"]))
