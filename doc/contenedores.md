@@ -1,4 +1,4 @@
-#Contenedores
+# Contenedores
 
 Ya tenemos docker instalado, dejamos el archivo de ejecución para su instalación, lo ejecutamos con "Ansible".
 
