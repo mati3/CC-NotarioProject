@@ -37,7 +37,6 @@ class TestAppCesta(unittest.TestCase):
     def test_clientes(self):
         response = self.app.get('/clientes')
         self.assertEqual(response.status_code, 200)
-        self.assertIn(b'jj@ugr.es', response.data)
 
     def test_All(self):
         response = self.app.get('/todo')
