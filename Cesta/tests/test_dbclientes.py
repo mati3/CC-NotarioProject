@@ -10,9 +10,11 @@ sys.path.append(dir_path)
 
 from dbclientes import dbClientes
 from pymongo import MongoClient
+import mongomock
 
+@mongomock.patch(servers=(('localhost', 27017),))
 def db():
-    c = MongoClient('localhost', None)
+    c = MongoClient('localhost')
     con = c.baseDeDatos
     db = dbClientes(con.Clientes)
     return db
