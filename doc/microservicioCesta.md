@@ -68,4 +68,11 @@ Posteriormente hemos desacoplado el modelo del sistema real, elevando a un nivel
 
 Generamos los [test](https://flask.palletsprojects.com/en/1.1.x/testing/) pertinentes para todo el código nuevo, en esta ocasión, para una mejor organización se ha puesto e el nombre de cada test la referencia de la clase a la que se refiere.
 
+Por último hemos añadido a Circleci una imagen de mongodb para que el proyecto se pueda desplegar correctamente en GitHub.
+
+Como buenas practicas hemos tenido en cuenta:
+
+- Que todo lo que devuelva nuestro microservicio sea .JSON
+- Para los test usamos [mongomock](https://pypi.org/project/mongomock/), como podemos ver en su [repositorio](https://github.com/mongomock/mongomock), es una biblioteca para probar código que interactúa con MongoDB. De esta forma mantenemos un código sin redundancia y cumplimos con la regla [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+
 
