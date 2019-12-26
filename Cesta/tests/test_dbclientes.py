@@ -12,7 +12,7 @@ from dbclientes import dbClientes
 from pymongo import MongoClient
 
 def db():
-    c = MongoClient('localhost', 27017)
+    c = MongoClient('localhost', None)
     con = c.baseDeDatos
     db = dbClientes(con.Clientes)
     return db
