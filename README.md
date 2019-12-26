@@ -17,8 +17,8 @@ Queremos tener un servicio web Restful que proporcione servicio a una futura apl
 
 Automatizar la ejecución:
 
-    buildtool: Rakefile         # Rake para Ruby 
-    buildtool: tasks.py         # Invoke para Python
+    buildtool: Catalogo/Rakefile         # Rake para Ruby 
+    buildtool: Cesta/tasks.py         # Invoke para Python
 
 Enlace a la documentación extendida de la [integración continua](doc/integracion_continua.md) de mi proyecto. 
 
