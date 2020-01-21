@@ -2,11 +2,11 @@
 require_relative  '../src/producto'
 require  'test/unit'
 
-require 'simplecov'
-SimpleCov.start
+#require 'simplecov'
+#SimpleCov.start
 
-require 'codecov'
-SimpleCov.formatter = SimpleCov::Formatter::Codecov
+#require 'codecov'
+#SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 class TestMyProducto <  Test::Unit::TestCase
 	
