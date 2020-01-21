@@ -5,5 +5,3 @@ gem 'sinatra'
 gem 'rack-test'
 gem 'foreman'
 
-gem 'simplecov', require: false
-gem 'codecov', require: false
