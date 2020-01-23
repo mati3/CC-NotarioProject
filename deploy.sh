@@ -24,6 +24,7 @@ elif [[ $1 == 'azure' ]]; then
 
 echo " " 
 read -p 'Do you want to deploy all?[yN] ' -n 1 -r 
+
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 fab -f despliegue/fabfile.py -H vagrant@ccwebproject.westeurope.cloudapp.azure.com Run
 fi
