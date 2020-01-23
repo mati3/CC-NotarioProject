@@ -1,0 +1,90 @@
+---
+- hosts: all
+  vars: 
+    user: false
+    var_laptop: "{{var_catalogo}}"
+    var_microsoft_office: "{{var_cesta}}"
+
+  become: yes
+  pre_tasks:
+    - name: vagrant_user
+      set_fact:
+        user: "{{vagrant_user}}"
+      when: vagrant_user is defined
+
+    - name: default
+      set_fact:
+        user: "mati"
+      when: not user
+
+    - debug:
+       var=user
+
+    - name: Update System
+      apt: 
+        update_cache=yes  
+        upgrade=yes  
+ 
+    - name: Install git 
+      apt: pkg=git state=present 
+    - name: Clonar
+      git:  repo=https://github.com/mati3/CC-WebProject.git dest=CC-WebProject/ clone=yes force=yes  
+    
+  tasks:
+    - name: Install dependencies 
+      apt: pkg={{item}} state=latest
+      with_items:
+        - build-essential
+        - ruby
+        - rubygems
+      when: var_catalogo == "yes"
+  
+    - gem: 
+        name=rake 
+        state=present
+      when: var_catalogo == "yes"
+
+    - gem: 
+        name=foreman 
+        state=present
+      when: var_catalogo == "yes"
+
+    - name: Install bundle  
+      become: yes
+      command: 
+        bash -lc "gem install bundle"
+      when: var_catalogo == "yes"
+      
+    - bundler:
+        state=present
+        gemfile=CC-WebProject/Catalogo/Gemfile
+        deployment_mode=yes
+      when: var_catalogo == "yes"
+
+    - name: Install dependencies 
+      become: yes
+      apt: pkg={{item}} state=latest
+      with_items:
+        - python3
+        - python3-pip
+      when: var_cesta == "yes"
+
+    - name: upgrade pip
+      command: pip3 install --upgrade pip
+      when: var_cesta == "yes"
+
+    - pip: 
+        name: virtualenv
+        executable: pip3
+        state: latest
+      when: var_cesta == "yes"
+
+    - name: requirements
+      command: pip3 install -r CC-WebProject/Cesta/requirements.txt
+      when: var_cesta == "yes"
+
+    - name: Mongodb
+      become: yes
+      command: apt install mongodb -y
+      virtualenv: CC-WebProject/Cesta/venv
+      when: var_cesta == "yes"
