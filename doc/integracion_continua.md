@@ -166,7 +166,7 @@ El gestor de dependencias para Python es pip. Ya lo tenemos instalado porque nos
 
 Pip permite gestionar una lista de dependencias de nuestro proyecto a través de un archivo de requisitos llamado requirement.txt, esto nos permite generar un entorno aislado dentro de nuestro sistema, con un conjunto de paquetes disponibles en ese entorno aislado. Para instalar el archivo:
 
-    pip3 install -r requirement.txt
+    pip3 install -r requirements.txt
 
 Queremos testear nuestras aplicaciones, hay varios marcos de testeo para Python, [Pytest](https://docs.pytest.org/en/latest/) es un marco de testeo de alto nivel para pruebas unitarias muy completas en Python.
 

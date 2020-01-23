@@ -74,5 +74,28 @@ Como buenas practicas hemos tenido en cuenta:
 
 - Que todo lo que devuelva nuestro microservicio sea .JSON
 - Para los test usamos [mongomock](https://pypi.org/project/mongomock/), como podemos ver en su [repositorio](https://github.com/mongomock/mongomock), es una biblioteca para probar código que interactúa con MongoDB. De esta forma mantenemos un código sin redundancia y cumplimos con la regla [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself).
+- Uso de SSL para devolver nuestro microservicio desde HTTPS para garantizar que las comunicaciones sean encriptadas, para ello añadimos "pyopenssl" a nuestro archivo requirements.txt y lo siguiente en "appCesta.py"
 
+if __name__ == "__main__":
+    app.run(ssl_context='adhoc')
+
+Cuando lo probamos en local nos indica que es un sitio no seguro, esto sucede porque no tenemos certificado:
+
+![imagen](img/cesta_https_1.png)
+
+![imagen](img/cesta_https_2.png)
+
+Generamos nuestro propio certificado autofirmado:
+
+    openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365
+
+Lo incluimos en producción:
+
+    gunicorn --certfile cert.pem --keyfile key.pem -w 5 appCesta:app
+
+También podríamos incluir los certificados en "appCesta.py" como alternativa en "ssl_context=('cert.pem', 'key.pem')".
+
+Aun con nuestro propio certificado, podemos ver el resultado:
+
+![imagen](img/cesta_https_3.png)
 
