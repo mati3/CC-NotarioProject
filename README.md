@@ -43,10 +43,14 @@ Enlace a la documentación extendida del [contenedor](doc/contenedores.md) de mi
 
 Prestaciones: Cesta/taurus.yml
 
-En esta tarea se pedía levantar el resto de microservicios, así que levantamos por completo nuestro microservicio "Cesta", realizado en Python y Flask.
-
 Enlace a la documentación extendida del [microservicio Cesta](doc/microservicioCesta.md)
 
 Hemos medido las prestaciones del microservicio nombrado con [Taurus](https://gettaurus.org/). Se estimaba como buen rendimiento unas 1000 peticiones/s  con 10 usuarios concurrentes. Después de algunos ajustes se ha alcanzado la meta propuesta.
 
 Enlace a la documentación extendida de la [medición de prestaciones](doc/taurusCesta.md)
+
+## Provisión y Despliegue:
+
+Hemos realizado dos despliegues, uno en local y otro en azure, hemos elegido Vagrant para  la orquestación de maquinas virtuales, para el aprovisionamiento Ansible, para el despliegue Fabric. Posteriormente creamos un script que gestiona todo en conjunto.
+
+Enlace a la documentación extendida [Provición y Despliegue](doc/provision_y_despliegue.md)
