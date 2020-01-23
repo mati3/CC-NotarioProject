@@ -88,3 +88,4 @@
       command: apt install mongodb -y
       virtualenv: CC-WebProject/Cesta/venv
       when: var_cesta == "yes"
+      
