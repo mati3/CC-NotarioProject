@@ -13,7 +13,7 @@ def Install():
 	
 def Run():
 	run('cd CC-WebProject/Catalogo && sudo bundle exec rackup ',pty=False)
-	run('cd CC-WebProject/Cesta && gunicorn -w 1 appCesta:app')
+	run('cd CC-WebProject/Cesta && gunicorn -w 1 appCesta:app',pty=False)
 
 def Update():
 	Install()
