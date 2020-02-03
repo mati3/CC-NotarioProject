@@ -8,13 +8,14 @@
 
 - Tenemos que generar un archivo "taurus.yml", que no es más que un script para JMeter usando la sintaxis .yml de configuración de Taurus para crear un escenario de prueba.
 
-    execution:
-    - concurrency: 10 # usuarios 
-      ramp-up: 1m # tiempo de aceleración = 1 mín
-      hold-for: 3m # duración de la prueba = 2 minutos
-      throughput: 1000 # limitamos a 1000 solicitudes por segundo
-      steps: 100 # numero de pasos, se distribuye el rendimiento entre los pasos y la aceleración definida.
-      scenario: get-requests # escenario a ejecutar
+        execution:
+
+        - concurrency: 10           # usuarios 
+          ramp-up: 1m               # tiempo de aceleración = 1 mín
+          hold-for: 3m              # duración de la prueba = 2 minutos
+          throughput: 1000          # limitamos a 1000 solicitudes por segundo
+          steps: 100                # numero de pasos, se distribuye el rendimiento entre los pasos y la aceleración definida.
+          scenario: get-requests    # escenario a ejecutar
      
 
     scenarios:
